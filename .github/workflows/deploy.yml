@@ -16,7 +16,6 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-size: 20
           node-version: 20
           cache: 'npm'
 
@@ -26,51 +25,35 @@ jobs:
       - name: Run Build (CI Verification)
         run: npm run build
 
-      - name: Create Production Bundle (Tarball)
+      - name: Deploy and Restart App Locally on VPS
         run: |
-          tar -czf deploy_bundle.tar.gz \
-            .next \
-            public \
-            package.json \
-            package-lock.json \
-            next.config.ts \
-            tsconfig.json
-
-      - name: Copy bundle to VPS via SSH
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT || 22 }}
-          source: "deploy_bundle.tar.gz"
-          target: ${{ secrets.DEPLOY_PATH }}
-
-      - name: Extract Bundle and Restart App via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT || 22 }}
-          script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-            
-            # Extract new release bundle
-            tar -xzf deploy_bundle.tar.gz
-            rm deploy_bundle.tar.gz
-            
-            # Install production dependencies only (much faster & lighter)
-            npm install --omit=dev
-            
-            # Restart or start the Next.js process using PM2
-            if pm2 list | grep -q "copisteria-garcia"; then
-              echo "Restarting existing PM2 process..."
-              pm2 restart copisteria-garcia
-            else
-              echo "Starting new PM2 process..."
-              pm2 start npm --name "copisteria-garcia" -- run start
-            fi
-            
-            # Save PM2 process list to persist on reboot
-            pm2 save
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          
+          echo "=== 1. Creando el directorio de despliegue si no existe ==="
+          mkdir -p "$DEPLOY_PATH"
+          
+          echo "=== 2. Copiando archivos de compilación al directorio de producción ==="
+          # Copy Next.js production files and configurations locally on the VPS
+          cp -R .next "$DEPLOY_PATH/"
+          cp -R public "$DEPLOY_PATH/"
+          cp package.json "$DEPLOY_PATH/"
+          cp package-lock.json "$DEPLOY_PATH/"
+          cp next.config.ts "$DEPLOY_PATH/"
+          cp tsconfig.json "$DEPLOY_PATH/"
+          
+          cd "$DEPLOY_PATH"
+          
+          echo "=== 3. Instalando dependencias de producción en la carpeta destino ==="
+          npm install --omit=dev
+          
+          echo "=== 4. Reiniciando o iniciando el proceso en PM2 ==="
+          if pm2 list | grep -q "copisteria-garcia"; then
+            echo "Reiniciando proceso PM2 existente..."
+            pm2 restart copisteria-garcia
+          else
+            echo "Iniciando nuevo proceso PM2..."
+            pm2 start npm --name "copisteria-garcia" -- run start
+          fi
+          
+          pm2 save
+          echo "=== ¡DESPLIEGUE COMPLETADO CORRECTAMENTE! ==="
