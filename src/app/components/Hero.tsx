@@ -35,7 +35,7 @@ export default function Hero({ onCTASelect }: HeroProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
               <button
                 onClick={() => onCTASelect("calculadoras")}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 text-white font-semibold shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-blue-700/35 active:scale-[0.98] transition-all bento-card stitch-border-white"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 text-white font-semibold shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-blue-700/35 active:scale-[0.98] transition-all stitch-border-white"
               >
                 Calculadora & Pedidos
                 <ArrowRight className="w-4 h-4" />
