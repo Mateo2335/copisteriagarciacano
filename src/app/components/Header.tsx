@@ -91,12 +91,10 @@ export default function Header({ onOpenCart, onNavigate }: HeaderProps) {
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick("hero")}>
-          <div className="bg-gradient-to-tr from-blue-600 to-cyan-500 p-2 rounded-xl shadow-md text-white font-black text-xl flex items-center justify-center w-10 h-10">
-            G
-          </div>
+          <img src="/logo-garcia-cano.png" alt="Logo Copistería García Cano" className="h-10 w-auto rounded-xl object-contain shadow-sm border border-slate-100" />
           <div className="flex flex-col">
-            <span className="text-sm font-semibold tracking-wider text-slate-400 uppercase leading-none">Copistería</span>
-            <span className="text-lg font-bold text-slate-900 leading-none">García Cano</span>
+            <span className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase leading-none">Copistería</span>
+            <span className="text-base font-bold text-slate-900 leading-none">García Cano</span>
           </div>
         </div>
 

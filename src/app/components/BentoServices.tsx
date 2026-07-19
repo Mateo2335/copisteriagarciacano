@@ -100,6 +100,18 @@ export default function BentoServices({ onSelectCalculator }: BentoServicesProps
               className="flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/60 shadow-sm hover:shadow-lg hover:border-blue-200/50 hover:-translate-y-1 transition-all duration-300 group bento-card stitch-border"
             >
               <div className="space-y-4">
+                {/* Imagen del bento según diseño de Google Stitch */}
+                {svc.id === "impresion" && (
+                  <div className="h-40 rounded-xl overflow-hidden mb-4 border border-blue-100">
+                    <img src="/printing-service.jpg" alt={svc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                )}
+                {svc.id === "textil" && (
+                  <div className="h-40 rounded-xl overflow-hidden mb-4 border border-cyan-100">
+                    <img src="/custom-gifts.jpg" alt={svc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                )}
+
                 {/* Header */}
                 <div className="flex justify-between items-start">
                   <div className={`p-3 rounded-xl bg-gradient-to-tr border ${svc.colorClass}`}>
