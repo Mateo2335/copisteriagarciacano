@@ -128,10 +128,10 @@ export default function ProductStore() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 mb-12">
           <div className="space-y-3 text-center md:text-left max-w-xl">
-            <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full">
+            <span className="text-xs uppercase font-extrabold tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg stitch-stamp">
               Catálogo de la Casa
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-serif-friendly">
               Nuestra Tienda de Artículos Propios
             </h2>
             <p className="text-slate-500 font-medium text-sm">
@@ -167,7 +167,7 @@ export default function ProductStore() {
             return (
               <div
                 key={p.id}
-                className="flex flex-col justify-between rounded-3xl border border-slate-200/60 bg-white p-6 shadow-sm hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 group relative"
+                className="flex flex-col justify-between rounded-3xl border border-slate-200/60 bg-white p-6 shadow-sm hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 group relative stitch-border"
               >
                 {/* Micro Category Badge */}
                 <span className="absolute top-4 right-4 text-[10px] uppercase font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
@@ -190,7 +190,7 @@ export default function ProductStore() {
                       <span className="text-[10px] text-slate-400 font-medium">({Math.floor(p.rating * 15)} opiniones)</span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors font-serif-friendly">
                       {p.name}
                     </h3>
 
