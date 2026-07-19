@@ -1,0 +1,76 @@
+name: CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-size: 20
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Build (CI Verification)
+        run: npm run build
+
+      - name: Create Production Bundle (Tarball)
+        run: |
+          tar -czf deploy_bundle.tar.gz \
+            .next \
+            public \
+            package.json \
+            package-lock.json \
+            next.config.ts \
+            tsconfig.json
+
+      - name: Copy bundle to VPS via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          source: "deploy_bundle.tar.gz"
+          target: ${{ secrets.DEPLOY_PATH }}
+
+      - name: Extract Bundle and Restart App via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            
+            # Extract new release bundle
+            tar -xzf deploy_bundle.tar.gz
+            rm deploy_bundle.tar.gz
+            
+            # Install production dependencies only (much faster & lighter)
+            npm install --omit=dev
+            
+            # Restart or start the Next.js process using PM2
+            if pm2 list | grep -q "copisteria-garcia"; then
+              echo "Restarting existing PM2 process..."
+              pm2 restart copisteria-garcia
+            else
+              echo "Starting new PM2 process..."
+              pm2 start npm --name "copisteria-garcia" -- run start
+            fi
+            
+            # Save PM2 process list to persist on reboot
+            pm2 save
