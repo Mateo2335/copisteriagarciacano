@@ -6,48 +6,48 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- BOUNDARY: VPS Server -->
-        <mxCell id="vps-boundary" value="Servidor VPS (109.207.172.134)" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontStyle=1;fontSize=14;fillColor=#f8fafc;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=top;startSize=40;rounded=1;arcSize=4;" vertex="1" parent="1">
+        <!-- BOUNDARY: Cloud VPS (AWS VPC style representation) -->
+        <mxCell id="vps-boundary" value="Cloud VPS Instance (109.207.172.134)" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontStyle=1;fontSize=14;fillColor=#f8fafc;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=top;startSize=40;rounded=1;arcSize=4;" vertex="1" parent="1">
           <mxGeometry x="360" y="40" width="560" height="460" as="geometry" />
         </mxCell>
 
-        <!-- EXTERNAL: Developer Laptop (Stencils Icon) -->
-        <mxCell id="node-developer" value="&lt;b&gt;Desarrollador (Mateo)&lt;/b&gt;&lt;br/&gt;Git Push (main)" style="shape=mxgraph.mscae.enterprise.laptop_computer;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=5;" vertex="1" parent="1">
+        <!-- EXTERNAL: Developer Laptop (AWS4 Desktop Icon) -->
+        <mxCell id="node-developer" value="&lt;b&gt;Desarrollador (Mateo)&lt;/b&gt;&lt;br/&gt;Git Push (main)" style="shape=mxgraph.aws4.desktop;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#232F3E;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=5;" vertex="1" parent="1">
           <mxGeometry x="30" y="225" width="110" height="90" as="geometry" />
         </mxCell>
 
-        <!-- EXTERNAL: GitHub Repository (Stencils Cloud Icon) -->
-        <mxCell id="node-github" value="&lt;b&gt;GitHub Repository&lt;/b&gt;&lt;br/&gt;copisteria-garcia" style="shape=mxgraph.mscae.enterprise.cloud;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=15;" vertex="1" parent="1">
+        <!-- EXTERNAL: GitHub Repository (AWS4 Git/CodeCommit Icon) -->
+        <mxCell id="node-github" value="&lt;b&gt;GitHub Repository&lt;/b&gt;&lt;br/&gt;copisteria-garcia" style="shape=mxgraph.aws4.codecommit;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#232F3E;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=5;" vertex="1" parent="1">
           <mxGeometry x="190" y="225" width="120" height="90" as="geometry" />
         </mxCell>
 
-        <!-- VPS INTERNAL: GitHub Actions Runner (Stencils Process Icon) -->
-        <mxCell id="node-runner" value="&lt;b&gt;GitHub Actions Runner&lt;/b&gt;&lt;br/&gt;Daemon auto-hospedado&lt;br/&gt;que procesa el Build" style="shape=mxgraph.mscae.enterprise.process;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
+        <!-- VPS INTERNAL: GitHub Actions Runner (AWS4 Systems Manager Icon) -->
+        <mxCell id="node-runner" value="&lt;b&gt;GitHub Actions Runner&lt;/b&gt;&lt;br/&gt;Daemon auto-hospedado&lt;br/&gt;que procesa el Build" style="shape=mxgraph.aws4.systems_manager;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
           <mxGeometry x="40" y="60" width="180" height="90" as="geometry" />
         </mxCell>
 
-        <!-- VPS INTERNAL: PM2 (Stencils Settings/Gears Icon) -->
-        <mxCell id="node-pm2" value="&lt;b&gt;PM2 Process Manager&lt;/b&gt;&lt;br/&gt;Administra el ciclo de vida&lt;br/&gt;--name &quot;copisteria-garcia&quot;" style="shape=mxgraph.mscae.enterprise.settings;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
+        <!-- VPS INTERNAL: PM2 (AWS4 Gear/Process Icon) -->
+        <mxCell id="node-pm2" value="&lt;b&gt;PM2 Process Manager&lt;/b&gt;&lt;br/&gt;Administra el ciclo de vida&lt;br/&gt;--name &quot;copisteria-garcia&quot;" style="shape=mxgraph.aws4.gear;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
           <mxGeometry x="40" y="195" width="180" height="90" as="geometry" />
         </mxCell>
 
-        <!-- VPS INTERNAL: Next.js App (Stencils Server Icon) -->
-        <mxCell id="node-nextjs" value="&lt;b&gt;Next.js App (Producción)&lt;/b&gt;&lt;br/&gt;Instancia en ejecución&lt;br/&gt;(localhost:3000)" style="shape=mxgraph.mscae.enterprise.server;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#2563eb;strokeColor=#1d4ed8;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="vps-boundary">
+        <!-- VPS INTERNAL: Next.js App (AWS4 EC2 Virtual Machine Icon) -->
+        <mxCell id="node-nextjs" value="&lt;b&gt;Next.js App (Producción)&lt;/b&gt;&lt;br/&gt;Instancia en ejecución&lt;br/&gt;(localhost:3000)" style="shape=mxgraph.aws4.ec2;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#2563eb;strokeColor=#1d4ed8;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="vps-boundary">
           <mxGeometry x="40" y="330" width="180" height="100" as="geometry" />
         </mxCell>
 
-        <!-- VPS INTERNAL: Nginx Reverse Proxy (Stencils Web Server Icon) -->
-        <mxCell id="node-nginx" value="&lt;b&gt;Nginx Reverse Proxy&lt;/b&gt;&lt;br/&gt;Proxy reverso seguro en&lt;br/&gt;copisteria.matthewrivero.com" style="shape=mxgraph.mscae.enterprise.web_server;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#06b6d4;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
+        <!-- VPS INTERNAL: Nginx Reverse Proxy (AWS4 Application Load Balancer Icon) -->
+        <mxCell id="node-nginx" value="&lt;b&gt;Nginx Reverse Proxy&lt;/b&gt;&lt;br/&gt;Proxy reverso seguro en&lt;br/&gt;copisteria.matthewrivero.com" style="shape=mxgraph.aws4.application_load_balancer;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#06b6d4;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;" vertex="1" parent="vps-boundary">
           <mxGeometry x="340" y="195" width="180" height="90" as="geometry" />
         </mxCell>
 
-        <!-- VPS INTERNAL: Certbot (Stencils Key Vault Icon) -->
-        <mxCell id="node-certbot" value="&lt;b&gt;Certbot (Let's Encrypt)&lt;/b&gt;&lt;br/&gt;Certificados SSL seguros&lt;br/&gt;Autogestionados y renovados" style="shape=mxgraph.mscae.enterprise.key_vault;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#06b6d4;strokeWidth=1;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;strokeDashArray=3 3;" vertex="1" parent="vps-boundary">
+        <!-- VPS INTERNAL: Certbot (AWS4 KMS/Shield Key Icon) -->
+        <mxCell id="node-certbot" value="&lt;b&gt;Certbot (Let's Encrypt)&lt;/b&gt;&lt;br/&gt;Certificados SSL seguros&lt;br/&gt;Autogestionados y renovados" style="shape=mxgraph.aws4.kms;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#06b6d4;strokeWidth=1;align=center;verticalAlign=bottom;spacingBottom=5;shadow=1;strokeDashArray=3 3;" vertex="1" parent="vps-boundary">
           <mxGeometry x="340" y="60" width="180" height="90" as="geometry" />
         </mxCell>
 
-        <!-- EXTERNAL: Client Browser (Stencils Browser Icon) -->
-        <mxCell id="node-client" value="&lt;b&gt;Cliente Navegador&lt;/b&gt;&lt;br/&gt;Navegación segura con SSL&lt;br/&gt;Puerto HTTPS 443" style="shape=mxgraph.mscae.enterprise.browser;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=5;" vertex="1" parent="1">
+        <!-- EXTERNAL: Client Browser (AWS4 Client Icon) -->
+        <mxCell id="node-client" value="&lt;b&gt;Cliente Navegador&lt;/b&gt;&lt;br/&gt;Navegación segura con SSL&lt;br/&gt;Puerto HTTPS 443" style="shape=mxgraph.aws4.client;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=10;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=center;verticalAlign=bottom;spacingBottom=5;" vertex="1" parent="1">
           <mxGeometry x="990" y="225" width="130" height="90" as="geometry" />
         </mxCell>
 
