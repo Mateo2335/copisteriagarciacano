@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm Kraft/Paper neighborhood tones */
-  --background: #faf6ef; /* warm, rich paper color */
-  --foreground: #2d241e; /* dark coffee bean, softer than pure black */
-  --primary-kraft: #8d6e63; /* warm brown */
-  --primary-kraft-light: #f5ede1; /* soft cream paper */
-  --accent-cyan: #e6a15c; /* warm terracotta orange/cyan shift */
+  /* Google Stitch: Garcia Cano Neighborhood System Colors */
+  --background: #f8fafc; /* Level 0: Soft blue-grey background */
+  --foreground: #0f172a; /* Slate 900 text */
+  --primary-blue: #2563eb; /* Primary brand color: Strong Blue */
+  --accent-cyan: #06b6d4; /* Secondary brand color: Accent Cyan */
+  --accent-orange: #f59e0b; /* Tertiary brand color: Gift Orange */
 }
 
 @theme inline {
@@ -14,42 +14,55 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans), Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
+  --font-serif-friendly: var(--font-montserrat), sans-serif; /* Montserrat font from Stitch Design System */
 
-  /* Override Tailwind Blue palette to handcrafted brown palette globally */
-  --color-blue-50: #fdfbf7;
-  --color-blue-100: #f5ede1;
-  --color-blue-200: #e6dacf;
-  --color-blue-300: #d7ccc8;
-  --color-blue-400: #bcaaa4;
-  --color-blue-500: #a1887f;
-  --color-blue-600: #8d6e63; /* Main Brand color */
-  --color-blue-700: #795548;
-  --color-blue-800: #5d4037;
-  --color-blue-900: #4e342e;
+  /* Override Blue spectrum to match Stitch Strong Blue */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb; /* Strong Blue Primary */
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
 
-  /* Override Tailwind Cyan palette to warm amber-terracotta palette globally */
-  --color-cyan-50: #fffbf0;
-  --color-cyan-100: #fef0db;
-  --color-cyan-200: #fce1b8;
-  --color-cyan-300: #f9ce91;
-  --color-cyan-400: #f5b362;
-  --color-cyan-500: #dfa674; /* Warm secondary accent */
-  --color-cyan-600: #c88b59;
-  --color-cyan-700: #b07340;
-  --color-cyan-800: #93592b;
-  --color-cyan-900: #78451e;
+  /* Override Cyan spectrum to match Stitch Accent Cyan */
+  --color-cyan-50: #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4; /* Accent Cyan Secondary */
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
 
-  /* Override Slate palette to warm paper-kraft-espresso spectrum globally */
-  --color-slate-50: #fdfaf5;   /* Warmest paper background */
-  --color-slate-100: #f5ede1;  /* Soft cream kraft paper */
-  --color-slate-200: #dfd3c3;  /* Cardboard sand border/bg */
-  --color-slate-300: #c7b198;  /* Aged paper shadow/accent */
-  --color-slate-400: #a0816c;  /* Warm medium gray-brown */
-  --color-slate-500: #856554;  /* Muted cocoa text */
-  --color-slate-600: #6a4f40;  /* Coffee bean text */
-  --color-slate-700: #563f31;  /* Dark chocolate text */
-  --color-slate-800: #423026;  /* Deep dark brown */
-  --color-slate-900: #2d241e;  /* Darkest coffee bean (softer than black) */
+  /* Override Amber/Orange spectrum to match Stitch Gift Orange */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b; /* Gift Orange Tertiary */
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+
+  /* Level 0 Background Slate overrides */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
 }
 
 html {
@@ -62,18 +75,25 @@ body {
   font-family: var(--font-sans);
 }
 
-/* --- THE STITCH & NEIGHBORHOOD COPYSHOP AESTHETIC --- */
+/* --- GOOGLE STITCH: GARCIA CANO DESIGN SYSTEM TOKENS --- */
 
-/* Standard stitched dashed inset border mimicking sewing pattern */
-.stitch-card {
+/* Bento Card Style */
+.bento-card {
   position: relative;
   background-color: #ffffff;
-  border: 1px solid rgba(141, 110, 99, 0.2);
-  border-radius: 1.5rem; /* 24px */
-  box-shadow: 0 4px 10px rgba(141, 110, 99, 0.05);
-  overflow: hidden;
+  border: 1px solid rgba(37, 99, 235, 0.06);
+  border-radius: 1rem; /* 16px (Stitch standard) */
+  box-shadow: 0px 4px 20px rgba(37, 99, 235, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0px 10px 30px rgba(37, 99, 235, 0.1);
+}
+
+/* Stitching lines (Dashed Borders) in Blue, Cyan, and Orange */
 .stitch-border {
   position: relative;
 }
@@ -85,12 +105,46 @@ body {
   bottom: 6px;
   left: 6px;
   right: 6px;
-  border: 1.5px dashed rgba(141, 110, 99, 0.4);
+  border: 1.5px dashed rgba(37, 99, 235, 0.25);
   border-radius: calc(inherit - 4px);
   pointer-events: none;
 }
 
-/* White stitch for darker backgrounds */
+/* Cyan stitching lines */
+.stitch-border-cyan {
+  position: relative;
+}
+
+.stitch-border-cyan::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  border: 1.5px dashed rgba(6, 182, 212, 0.35);
+  border-radius: calc(inherit - 4px);
+  pointer-events: none;
+}
+
+/* Orange stitching lines */
+.stitch-border-orange {
+  position: relative;
+}
+
+.stitch-border-orange::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  border: 1.5px dashed rgba(245, 158, 11, 0.35);
+  border-radius: calc(inherit - 4px);
+  pointer-events: none;
+}
+
+/* White stitch for blue backgrounds */
 .stitch-border-white {
   position: relative;
 }
@@ -107,60 +161,30 @@ body {
   pointer-events: none;
 }
 
-/* Cardboard brown stitch */
-.stitch-border-brown {
-  position: relative;
-}
-
-.stitch-border-brown::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  border: 2px dashed #8d6e63;
-  border-radius: calc(inherit - 6px);
-  pointer-events: none;
-}
-
-/* Sticky-note yellow post-it */
-.sticky-note {
-  background-color: #fefcf0;
-  border-left: 6px solid #e0cda9;
-  box-shadow: 2px 4px 15px rgba(141, 110, 99, 0.06);
-}
-
-/* Postal Stamp effect */
+/* Stitch postal stamp */
 .stitch-stamp {
-  border: 2px dashed #8d6e63;
+  border: 1.5px dashed #2563eb;
   padding: 3px 8px;
-  font-family: monospace;
-  font-weight: bold;
+  font-family: var(--font-serif-friendly), sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: #8d6e63;
+  letter-spacing: 0.05em;
+  color: #2563eb;
   border-radius: 6px;
-  background-color: #fcf9f2;
+  background-color: #f8fafc;
 }
 
-/* Soft paper-tear or cardboard texture simulation */
-.bg-kraft-gradient {
-  background: linear-gradient(135deg, #fbf7f0 0%, #f4eae1 100%);
+/* Sticky-note (post-it) in Cyan background */
+.sticky-note-cyan {
+  background-color: #ecfeff;
+  border-left: 6px solid #22d3ee;
+  box-shadow: 2px 4px 15px rgba(6, 182, 212, 0.05);
 }
 
-.bg-kraft-dark {
-  background-color: #f0e3d2;
-}
-
-.border-kraft {
-  border-color: #dfd3c3;
-}
-
-/* Friendly serif/script headers for neighborhood feel */
+/* Friendly serif/script headers for neighborhood feel (mapped to Montserrat) */
 .font-serif-friendly {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-serif-friendly), sans-serif;
 }
 
 /* Custom soft fade-in animations */
