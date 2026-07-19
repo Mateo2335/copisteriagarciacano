@@ -31,6 +31,7 @@ jobs:
       - name: Deploy and Restart App Locally on VPS
         run: |
           DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          DEPLOY_PATH="${DEPLOY_PATH:-/home/matthew/copisteria-garcia-prod}"
           
           echo "=== 1. Creando el directorio de despliegue si no existe ==="
           mkdir -p "$DEPLOY_PATH"
